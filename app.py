@@ -8,5 +8,8 @@ client.start(phone_number)
 @client.on(events.NewMessage(pattern='(?i)hi'))
 async def hi(e):
     await e.reply('Hello!')
+@client.on(events.NewMessage(pattern='(?i)list'))
+async def list(e):
+    participants = client.get_participants(group)
+    await bot.send_message(e.chat_id, participants)
 client.run_until_disconnected()
-
